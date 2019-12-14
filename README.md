@@ -28,6 +28,10 @@ You will need a key from [MapTiler](https://cloud.maptiler.com/account/keys).
 MAPTILER_KEY=<insert your key here> npm run dev
 ```
 
+## License
+
+This project is licensed under the MPL 2.0 license, see the LICENSE file.
+
 ## Acknowledgements
 
 The following open source libraries have made MeshTiler possible:
