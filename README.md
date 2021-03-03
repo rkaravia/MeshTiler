@@ -13,7 +13,6 @@ Demo: **[Try it here!](https://mesh-tiler.karavia.ch)**
 
 [<img src="screenshot.png" alt="Screenshot" width="640">](https://mesh-tiler.karavia.ch)
 
-
 ## Install
 
 ```
@@ -38,9 +37,9 @@ The following open source libraries have made MeshTiler possible:
 
 - [MARTINI](https://github.com/mapbox/martini), © 2019 Mapbox,
   [ISC License](https://github.com/mapbox/martini/blob/master/LICENSE)
-- [Svelte](https://svelte.dev), © 2016-2019 Svelte contributors
+- [Svelte](https://svelte.dev), © 2016-2021 Svelte contributors
   [MIT License](https://github.com/sveltejs/svelte/blob/master/LICENSE)
-- [Leaflet](https://leafletjs.com), © 2010-2011 CloudMade, © 2010-2019 Vladimir Agafonkin,
+- [Leaflet](https://leafletjs.com), © 2010-2011 CloudMade, © 2010-2021 Vladimir Agafonkin,
   [BSD 2-Clause License](https://github.com/Leaflet/Leaflet/blob/master/LICENSE)
-- [three.js](https://threejs.org), © 2010-2019 three.js authors,
+- [three.js](https://threejs.org), © 2010-2021 three.js authors,
   [MIT License](https://github.com/mrdoob/three.js/blob/master/LICENSE)
