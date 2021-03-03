@@ -6,7 +6,7 @@ const places = [
   { lon: 8.55889, lat: 46.58153 },
   { lon: 8.57913, lat: 47.12772 },
   { lon: 25.39693, lat: 36.40327 },
-  { lon: 138.73078, lat: 35.36278 }
+  { lon: 138.73078, lat: 35.36278 },
 ];
 
 export default function getRandomPlace() {

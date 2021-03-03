@@ -2,7 +2,7 @@ import getRandomPlace from "../common/places.js";
 import position from "../common/position.js";
 
 let lastPosition;
-position.subscribe(newPosition => {
+position.subscribe((newPosition) => {
   if (newPosition !== null) {
     const hash = formatHash(newPosition);
     window.location.replace(hash);
@@ -49,7 +49,7 @@ function parseHash(hash) {
       if (!isNaN(lon) && !isNaN(lat)) {
         return {
           lon,
-          lat
+          lat,
         };
       }
     }

@@ -10,7 +10,7 @@ export default async function getTexture(position, zoom) {
     lat,
     zoom: zoom + Math.log2(textureSize / terrainSize),
     size: textureSize,
-    url: satelliteUrl
+    url: satelliteUrl,
   });
   return new CanvasTexture(canvas);
 }

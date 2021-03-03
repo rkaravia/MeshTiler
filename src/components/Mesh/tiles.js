@@ -6,7 +6,7 @@ export function loadToCanvas(options) {
   const canvas = document.createElement("canvas");
   canvas.width = size;
   canvas.height = size;
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     staticMap.getMap(canvas, lon, lat, zoom, () => {
       resolve(canvas);
     });
