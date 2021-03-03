@@ -22,41 +22,38 @@ export default {
     sourcemap: true,
     format: "iife",
     name: "app",
-    file: "public/bundle.js"
+    file: "public/bundle.js",
   },
   plugins: [
-    css({ output: "public/global.css" }),
-
     copy({
       targets: [
         { src: "screenshot.png", dest: "public/images" },
-        { src: "node_modules/leaflet/dist/images", dest: "public" }
-      ]
+        { src: "node_modules/leaflet/dist/images", dest: "public" },
+      ],
     }),
 
     svelte({
-      // enable run-time checks when not in production
-      dev: !production,
-      // we'll extract any component CSS out into
-      // a separate file — better for performance
-      css: css => {
-        css.write("public/bundle.css");
-      }
+      compilerOptions: {
+        // enable run-time checks when not in production
+        dev: !production,
+      },
     }),
+    // we'll extract any component CSS out into
+    // a separate file - better for performance
+    css({ output: "bundle.css" }),
 
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
-    // some cases you'll need additional configuration —
+    // some cases you'll need additional configuration -
     // consult the documentation for details:
-    // https://github.com/rollup/rollup-plugin-commonjs
+    // https://github.com/rollup/plugins/tree/master/packages/commonjs
     resolve({
       browser: true,
-      dedupe: importee =>
-        importee === "svelte" || importee.startsWith("svelte/")
+      dedupe: ["svelte"],
     }),
 
     replace({
-      MAPTILER_KEY: process.env.MAPTILER_KEY
+      MAPTILER_KEY: process.env.MAPTILER_KEY,
     }),
 
     commonjs(),
@@ -67,9 +64,9 @@ export default {
 
     // If we're building for production (npm run build
     // instead of npm run dev), minify
-    production && terser()
+    production && terser(),
   ],
   watch: {
-    clearScreen: false
-  }
+    clearScreen: false,
+  },
 };

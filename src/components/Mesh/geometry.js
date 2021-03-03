@@ -1,4 +1,4 @@
-import Martini from "./Martini.js";
+import Martini from "@mapbox/martini";
 import { loadImageData } from "./tiles.js";
 import { terrainUrl, terrainSize, meshMaxError } from "../common/config.js";
 
@@ -21,7 +21,7 @@ function imageData({ lon, lat }, zoom) {
     zoom: zoom + Math.log2(256 / terrainTileSize),
     tileSize: terrainTileSize,
     size: terrainSize,
-    url: terrainUrl
+    url: terrainUrl,
   });
 }
 
