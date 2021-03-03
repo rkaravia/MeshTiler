@@ -90,7 +90,7 @@
   {#if isMeshLoading}
     Loading...
   {:else if hasMesh}
-    <a href="javascript:void(0)" class="clear-button" on:click={clear}>
+    <a href class="clear-button" on:click|preventDefault={clear}>
       <svg viewBox="0 0 32 32">
         <path
           d="M24 10L22 8L16 14L10 8L8 10L14 16L8 22L10 24L16 18L22 24L24 22L18
@@ -109,9 +109,7 @@
   {:else}
     <span>
       Click on the map to choose a location or
-      <a href="javascript:void(0)" on:click={randomLocation}>
-        go to a random place
-      </a>
+      <a href on:click|preventDefault={randomLocation}>go to a random place</a>
     </span>
   {/if}
 </div>
