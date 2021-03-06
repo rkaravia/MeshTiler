@@ -1,5 +1,5 @@
 import StaticMap from "@rkaravia/static-map";
-import { project } from "swissgrid";
+import { project, unproject } from "swissgrid";
 import { terrainSize } from "../common/config";
 
 // Available resolutions
@@ -67,15 +67,31 @@ export function loadToCanvas({ lon, lat, zoom, tileSize, size, url }) {
 }
 
 export function loadSwissAlti3D({ lon, lat, zoom, tileSize, size, url }) {
-  const staticMap = new StaticMap([url], {
+  const staticMap = new StaticMap("{x}|{y}", {
     size: tileSize,
     lonLatToPixel: lonLatToPixelSwissAlti3D,
     tileLoader: async (url, callback) => {
-      const blob = await fetch(url).then((response) => response.blob());
+      // console.log({ url });
+      const [E, N] = url.split("|").map((coord) => coord * 1000);
+      // console.log({ E, N });
+      const lonLat = unproject([E + 500, N + 500]);
+      const bbox = [...lonLat, ...lonLat].join();
+      // console.log({ bbox });
+      const stacApiUrl = `https://data.geo.admin.ch/api/stac/v0.9/collections/ch.swisstopo.swissalti3d/items?bbox=${bbox}`;
+      const items = await fetch(stacApiUrl).then((response) => response.json());
+
+      const asset = Object.values(items.features[0].assets).find(
+        (asset) => asset.type.includes("tiff") && asset["eo:gsd"] === 2
+      );
+
+      // const id = items.features[0].id; //swissalti3d_2019_2684-1160
+      // const tileUrl = `https://data.geo.admin.ch/ch.swisstopo.swissalti3d/${id}/${id}_2_2056_5728.tif`;
+
+      const blob = await fetch(asset.href).then((response) => response.blob());
       const pyramid = await GeoTIFF.fromBlob(blob);
       const image = await pyramid.getImage(0);
       const data = await image.readRasters();
-      callback(data);
+      https: callback(data);
     },
   });
 
