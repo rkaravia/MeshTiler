@@ -1,5 +1,6 @@
 import {
   Color,
+  BackSide,
   Mesh,
   MeshBasicMaterial,
   PerspectiveCamera,
@@ -11,7 +12,8 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 export default class Renderer {
   constructor(canvas) {
     this.hasGeometry = false;
-    this.mesh = new Mesh();
+    this.frontMesh = new Mesh();
+    this.backMesh = new Mesh();
     this.camera = this._setupCamera();
     this.scene = this._setupScene();
     this.renderer = this._setupRenderer(canvas);
@@ -34,8 +36,13 @@ export default class Renderer {
 
   updateMesh({ geometry, texture }) {
     this.hasGeometry = true;
-    this.mesh.geometry = geometry;
-    this.mesh.material = new MeshBasicMaterial({ map: texture });
+    this.frontMesh.geometry = geometry;
+    this.frontMesh.material = new MeshBasicMaterial({ map: texture });
+    this.backMesh.geometry = geometry;
+    this.backMesh.material = new MeshBasicMaterial({
+      color: 0x614d48,
+      side: BackSide,
+    });
     this.rerender();
   }
 
@@ -56,7 +63,8 @@ export default class Renderer {
   _setupScene() {
     const scene = new Scene();
     scene.background = new Color(0xeeeeee);
-    scene.add(this.mesh);
+    scene.add(this.frontMesh);
+    scene.add(this.backMesh);
     return scene;
   }
 
