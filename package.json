@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@mapbox/martini": "^0.2.0",
-    "@rz0/static-map": "^0.1.1",
+    "@rkaravia/static-map": "^0.2.2",
     "leaflet": "^1.7.1",
     "sirv-cli": "^1.0.11",
     "three": "^0.126.1"

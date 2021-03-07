@@ -1,4 +1,4 @@
-import StaticMap from "@rz0/static-map";
+import StaticMap from "@rkaravia/static-map";
 
 export function loadToCanvas(options) {
   const { lon, lat, zoom, tileSize, size, url } = options;
