@@ -13,6 +13,8 @@ Demo: **[Try it here!](https://mesh-tiler.karavia.ch)**
 
 [<img src="screenshot.png" alt="Screenshot" width="640">](https://mesh-tiler.karavia.ch)
 
+See also: [MeshTiler CH](https://github.com/rkaravia/mesh-tiler-ch) – similar project using Swisstopo Open Data
+
 ## Install
 
 ```
